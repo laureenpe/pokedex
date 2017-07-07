@@ -1,0 +1,182 @@
+/*=============================================
+=            START MY CSS            =
+=============================================*/
+
+body {
+  margin: 0;
+}
+
+header {
+  color: #e84848;
+}
+
+
+
+/*=============================================
+=            Nav-bar            =
+=============================================*/
+
+nav {
+  margin-bottom: 4%;
+}
+
+nav .input-field label i {
+  color: #676767;
+  font-size: 35px;
+}
+
+.input-field input[type=search] {
+  width: calc(53% - 1rem);
+}
+
+nav .input-field {
+  height: 100%;
+}
+
+nav {
+  background-color: white;
+  height: 0px;
+}
+
+
+
+/*=============================================
+=            PHOTOS            =
+=============================================*/
+
+
+
+
+.photos {
+  margin-top: 8%;
+}
+
+.photo {
+  border: 1px solid #eee;
+  margin: 7px 0;
+  text-align: center;
+  line-height: 50px;
+  font-size: 28px;
+  background-color: #efefef;
+  color: white;
+  padding: 0;
+}
+
+
+
+/*=============================================
+=            BUTTONS            =
+=============================================*/
+
+
+.btn {
+  height: 45px;
+  line-height: 54px;
+}
+
+.text {
+  background-color: black;
+}
+
+
+
+/*=============================================
+=            POKEMON TEXT            =
+=============================================*/
+
+.text-pokes {
+  background-color: white;
+  color: black;
+}
+
+span {
+  text-align: center;
+}
+
+a .medium {
+  text-align: center;
+}
+
+
+
+/*=============================================
+= POKEDEX STYLES http://www.pokemon.com/es/pokedex/    =
+=============================================*/
+
+.pokemon-box {
+  width: 100%;
+  height: 200px;
+}
+
+.notch-collectibles-small {
+  position: relative;
+  width: 100%;
+  height: 53px;
+  backface-visibility: hidden;
+  margin: -43px 0 0 0;
+  background: transparent url(../img/notch-collectibles.png) center top no-repeat;
+  border-bottom: 2px solid #fff;
+  display: inline-block;
+}
+
+.notch-collectibles-small .collectibles-wrapper {
+  width: 102px;
+  margin: 12px auto 0 auto;
+  text-align: center;
+}
+
+.notch-collectibles-small .collectibles-wrapper a {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+
+.notch-collectibles-small .collectibles-wrapper div a span.icon, .notch-collectibles-small .collectibles-wrapper div a span.arrow-right.button:after, .notch-collectibles-small .collectibles-wrapper div a body.custom-form-elements label.radio-as-toggle-button input+span.arrow-right:after, body.custom-form-elements label.radio-as-toggle-button .notch-collectibles-small .collectibles-wrapper div a input+span.arrow-right:after, .notch-collectibles-small .collectibles-wrapper div a span.arrow-left.button:before, .notch-collectibles-small .collectibles-wrapper div a body.custom-form-elements label.radio-as-toggle-button input+span.arrow-left:before, body.custom-form-elements label.radio-as-toggle-button .notch-collectibles-small .collectibles-wrapper div a input+span.arrow-left:before {
+  color: #616161;
+  margin-top: 7px;
+}
+
+.icon img {
+  width: 84%;
+}
+
+.collectibles-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.texto {
+  text-align: center;
+}
+
+
+
+/*=============================================
+=            MODAL            =
+=============================================*/
+
+.flex-container {
+  display: flex;
+}
+
+.box-modal {
+  background-color: #36a4d3;
+  color: white;
+  width: 50%;
+  margin-left: 20px;
+  padding: 20px;
+}
+
+.color {
+  background-color: yellow;
+  color: black;
+  text-align: center;
+  padding: 20px;
+}
+
+.color-weakness {
+  background-color: blueviolet;
+  color: black;
+  text-align: center;
+  padding: 20px;
+}

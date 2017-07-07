@@ -16,7 +16,104 @@
 </head>
 
 <body>
-    
+    <header>
+        <h2 class="center">Pokédex</h2>
+    </header>
+    <nav class="container">
+        <div class="nav-wrapper search">
+            <form>
+                <div class="input-field">
+                    <input id="search" type="search" required>
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
+        </div>
+    </nav>
+
+    <section>
+        <button type="button" class="waves-effect waves-light btn right ">A-Z</button>
+    </section>
+
+    <!--Photos, here goes the dinamic JS with the API photos-->
+    <section class="photos container">
+        <div class="row pokemon-container">
+        </div>
+    </section>
+    <!--MODALS-->
+    <section>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <div class="flex-container">
+                    <div class="pokemon-box">
+                        <figure class="photo"><a href="#modal1"><img  src="assets/img/015.png" alt="photo"></a></figure>
+                        <div class="notch-collectibles-small">
+                            <div class="collectibles-wrapper">
+                                <div class="collectibles-collection"><a href="#" rel="tooltip" title="Añadir a mi colección" data-collection="have"><span class="icon icon_collection"><img src="assets/icon/pokeball_gray.png" alt="icon"></span></a></div>
+                                <div class="collectibles-wishlist"><a href="#" rel="tooltip" title="Añadir a mi lista de deseos" data-collection="want"><span class="icon icon_wishlist"><img src="assets/icon/valentines-heart.png" alt="icon"> </span></a></div>
+                                <div class="collectibles-trade"><a href="#" rel="tooltip" title="Añadir a mi lista de intercambios" data-collection="trade"><span class="icon icon_trade"><img src="assets/icon/data.png" alt="icon"></span></a></div>
+                            </div>
+                            <div class="texto">
+                                <medium>Beedrill</medium>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="description">
+                        <h1 id="name">Beedrill</h1>
+                        <p id="base_experience">Los Beedrill defienden su territorio a toda costa. No es conveniente acercarse a su colmena, por
+                            su seguridad. Si se les molesta, todo un enjambre atacará ferozmente</p>
+                        <div class="box-modal">
+
+                            <div class="row">
+                                <div class="col s12 m6">
+                                    <div class="altura"><small>Altura:</small> <small id="height">10px</small></div>
+                                    <div class="peso"><small>Peso:</small> <small id="height">29.5 kgs</small></div>
+                                    <div class="sexo"><small>Sexo:</small> <small id="height">Masculino</small></div>
+
+                                </div>
+                                <div class="col s12 m6 offset-s2">
+                                    <div class="categoria"><small>Categorìa:</small> <small id="height">Abeja Venenosa</small></div>
+                                    <div class="habilidad"><small>Habilidad:</small> <small id="height">10px</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--TIPO-->
+            <div class="type">
+                <div class="row">
+                    <div class="col s7 push-s3"><span class="flow-text "><small>Tipo:</small></span></div>
+
+                </div>
+                <div class="row">
+                    <div class="col s6 push-s3"><span class="flow-text color"><small>Bicho</small></span></div>
+                    <div class="col s6"><span class="flow-text color"><small>Veneno</small></span></div>
+
+                </div>
+            </div>
+            <!--DEBILIDAD-->
+            <div class="weaknes">
+                <div class="row">
+                    <div class="col s7 push-s3"><span class="flow-text "><small>Debilidad:</small></span></div>
+
+                </div>
+                <div class="row">
+                    <div class="col s3 push-s3"><span class="flow-text color-weakness"><small>Fuego</small></span></div>
+                    <div class="col s3 "><span class="flow-text color-weakness"><small>Volador</small></span></div>
+                    <div class="col s3 "><span class="flow-text color-weakness"><small>Volador</small></span></div>
+                    <div class="col s3 "><span class="flow-text color-weakness"><small>Psiquico</small></span></div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+    </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Compiled and minified JavaScript Materialize -->

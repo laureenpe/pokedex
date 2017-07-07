@@ -50,7 +50,7 @@ function onClickPokemon(element) {
 
     var id = $("#" + element.id).attr('data-id');
 
-//Calling for rthe modal
+//Calling for the modal
     $.ajax({
         url: API + "pokemon/" + id
     }).done(function (response) {
@@ -58,7 +58,19 @@ function onClickPokemon(element) {
         console.log("Nombre: " + response.name);
         $("#modal-name").html(response.name);
         $("#modal-photo").attr("src", getPokemonImage(id));
-        $("#pokemon-modal-name").html(response.name);
+        $("#pokemon-modal-name").html(response.name);     
     });
 }
+//Calling for the modal text
+
+
+ $.ajax({
+        url: "http://pokeapi.co/api/v2/pokedex/" + id
+    }).done(function (response) {
+        $("#base_experience").html(response.name);     
+    });
+
+//ajax llama 811 pokemons
+//ajax click 
+//ajax busca imagen
 

@@ -13,7 +13,9 @@ function getPokemonImage(id) {
 // get all the pokemons from api with ajax.
 function getPokemons() {
     $.ajax({
-        url: API + "pokemon?limit=20" //limit 20 because it is too slow to run the 811
+        url: API + "pokemon?limit=20",//limit 20 because it is too slow to run the 811
+        type:'GET',
+        datatType: 'JSON'
     }).done(function (response) {
 
         for (var i = 0; i < response.results.length; i++) {
@@ -24,7 +26,7 @@ function getPokemons() {
             console.log(image);
             var html = `<div class="col s10 m2 l2">
                 <div class="pokemon-box">
-                    <figure class="photo"><a href="#modal1" data-id="`+ id + `"><img src="` + image + `" alt="photo"></a></figure>
+                    <figure class="photo"><a href="#modal1" data-id="`+ id + `" onclick="onClickPokemon(this)" id="pokemon_`+id+`"><img src="` + image + `" alt="photo"></a></figure>
                     <div class="notch-collectibles-small">
                         <div class="collectibles-wrapper">
                             <div class="collectibles-collection"><a href="#" rel="tooltip"<span class="icon icon_collection"><img src="assets/icon/pokeball_gray.png" alt="icon"></span></a></div>
@@ -40,6 +42,23 @@ function getPokemons() {
 
             $('.pokemon-container').append(html);
         }
+    });
+}
+
+function onClickPokemon(element) {
+    console.log(element.id);
+
+    var id = $("#" + element.id).attr('data-id');
+
+//Calling for rthe modal
+    $.ajax({
+        url: API + "pokemon/" + id
+    }).done(function (response) {
+        console.log(response);
+        console.log("Nombre: " + response.name);
+        $("#modal-name").html(response.name);
+        $("#modal-photo").attr("src", getPokemonImage(id));
+        $("#pokemon-modal-name").html(response.name);
     });
 }
 

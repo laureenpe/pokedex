@@ -14,7 +14,7 @@ function getPokemonImage(id) {
 function getPokemons() {
     $.ajax({
         url: API + "pokemon?limit=20",//limit 20 because it is too slow to run the 811
-        type:'GET',
+        type: 'GET',
         datatType: 'JSON'
     }).done(function (response) {
 
@@ -26,7 +26,7 @@ function getPokemons() {
             console.log(image);
             var html = `<div class="col s10 m2 l2">
                 <div class="pokemon-box">
-                    <figure class="photo"><a href="#modal1" data-id="`+ id + `" onclick="onClickPokemon(this)" id="pokemon_`+id+`"><img src="` + image + `" alt="photo"></a></figure>
+                    <figure class="photo"><a href="#modal1" data-id="`+ id + `" onclick="onClickPokemon(this)" id="pokemon_` + id + `"><img src="` + image + `" alt="photo"></a></figure>
                     <div class="notch-collectibles-small">
                         <div class="collectibles-wrapper">
                             <div class="collectibles-collection"><a href="#" rel="tooltip"<span class="icon icon_collection"><img src="assets/icon/pokeball_gray.png" alt="icon"></span></a></div>
@@ -50,7 +50,7 @@ function onClickPokemon(element) {
 
     var id = $("#" + element.id).attr('data-id');
 
-//Calling for the modal
+    //Calling for the modal
     $.ajax({
         url: API + "pokemon/" + id
     }).done(function (response) {
@@ -58,17 +58,20 @@ function onClickPokemon(element) {
         console.log("Nombre: " + response.name);
         $("#modal-name").html(response.name);
         $("#modal-photo").attr("src", getPokemonImage(id));
-        $("#pokemon-modal-name").html(response.name);     
+        $("#pokemon-modal-name").html(response.name);
+
+        //Calling for the modal text
+        $.ajax({
+            url: API + "pokemon-species/" + id
+        }).done(function (species) {
+            console.log(species);
+            $("#base_experience").html(species.flavor_text_entries[11].flavor_text);
+
+        });
+
     });
 }
-//Calling for the modal text
 
-
- $.ajax({
-        url: "http://pokeapi.co/api/v2/pokedex/" + id
-    }).done(function (response) {
-        $("#base_experience").html(response.name);     
-    });
 
 //ajax llama 811 pokemons
 //ajax click 

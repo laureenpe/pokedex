@@ -59,14 +59,27 @@ function onClickPokemon(element) {
         $("#modal-name").html(response.name);
         $("#modal-photo").attr("src", getPokemonImage(id));
         $("#pokemon-modal-name").html(response.name);
+        //WEIGTH AND HEIGHT
+        $("#weight").html(response.weight);
+        $("#height").html(response.height);
+
+        //Types
+        for (var index = 0; index < response.types.length; index++) {
+            var type = response.types[index].type.name;
+            $('#type-pokemon').append(type + " ");
+            console.log(type);
+        }
 
         //Calling for the modal text
         $.ajax({
             url: API + "pokemon-species/" + id
         }).done(function (species) {
+            console.log("species");
             console.log(species);
             $("#base_experience").html(species.flavor_text_entries[11].flavor_text);
+            $("#pokemon-category").html(species.genera[0].genus);
 
+            console.log(species.genera[0].genus);
         });
 
     });

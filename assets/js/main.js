@@ -42,7 +42,7 @@ function getPokemons() {
                         </div>
                     </div>
                 </div>
-            </div>`;           
+            </div>`;
         }
         $('.pokemon-container').html(html); //previously I had append but it wasn´t working with the search button
     });
@@ -50,9 +50,7 @@ function getPokemons() {
 
 function onClickPokemon(element) {
     console.log(element.id);
-
     var id = $("#" + element.id).attr('data-id');
-
     //Calling for the modal
     $.ajax({
         url: API + "pokemon/" + id
@@ -105,7 +103,7 @@ function onClickPokemon(element) {
 }
 
 
-//POKEMONS FINDER
+//POKEMONS SEARCH
 
 function findPokemons(name) {
     var result = pokemons.find(function (element) {
@@ -113,6 +111,39 @@ function findPokemons(name) {
     });
     return result;
 }
+function sortPokemons() {
+    var pokeResult = pokemons.sort(function (a, b) {
+        return b.name < a.name;
+    })
+
+    var html = ""; //accumulate var
+    for (var i = 0; i < pokeResult.length; i++) {
+        var name = pokeResult[i].name;
+        var url_id = pokeResult[i].url.split('/');//To get only the ID number
+        var id = url_id[url_id.length - 2];
+        var image = getPokemonImage(id);
+        console.log(image);
+        html += `<div class="col s10 m2 l2">
+                <div class="pokemon-box">
+                    <figure class="photo"><a href="#modal1" data-id="`+ id + `" onclick="onClickPokemon(this)" id="pokemon_` + id + `"><img src="` + image + `" alt="photo"></a></figure>
+                    <div class="notch-collectibles-small">
+                        <div class="collectibles-wrapper">
+                            <div class="collectibles-collection"><a href="#" rel="tooltip"<span class="icon icon_collection"><img src="assets/icon/pokeball_gray.png" alt="icon"></span></a></div>
+                            <div class="collectibles-wishlist"><a href="#" rel="tooltip"<span class="icon icon_wishlist"><img src="assets/icon/valentines-heart.png" alt="icon"> </span></a></div>
+                            <div class="collectibles-trade"><a href="#" rel="tooltip"><span class="icon icon_trade"><img src="assets/icon/data.png" alt="icon"></span></a></div>
+                        </div>
+                        <div class="texto">
+                            <medium>`+ name + `</medium>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+    }
+
+    $('.pokemon-container').html(html); //previously I had append but it wasn´t working with the search button
+};
+
+//ON KEY PRESS, LOOK UP FOR THE POKEMONS
 function onKeyPress(event) {
     if (event.keyCode == 13) {
         if ($('#new-task').val() != '') {
@@ -147,10 +178,6 @@ function onKeyPress(event) {
         }
     }
 }
-
-
-
-
 
 //ajax llama 811 pokemons
 //ajax click 

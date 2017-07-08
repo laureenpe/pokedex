@@ -63,6 +63,12 @@ function onClickPokemon(element) {
         $("#weight").html(response.weight);
         console.log("Peso y tamaño: " + response.weight + " " + response.height);
         $("#height").html(response.height);
+        //ABILITIES
+        for (var k = 0; k < response.types.length; k++) {
+            var abilities = response.abilities[k].ability.name;
+            $('#habilities').append(abilities + " ");
+            console.log("habilidades" + " " +abilities);
+        }
 
         //Types
         for (var index = 0; index < response.types.length; index++) {
@@ -82,15 +88,15 @@ function onClickPokemon(element) {
 
             console.log(species.genera[0].genus);
         });
-/*I pretend to call the gender but it is not working
-         $.ajax({
-            url: API + "gender/" + id
-        }).done(function (gender) {
-            console.log("genero");
-            console.log(gender);
-            $("#gender").html(gender.name);
-
-        });*/
+        /*I pretend to call the gender but it is not working
+                 $.ajax({
+                    url: API + "gender/" + id
+                }).done(function (gender) {
+                    console.log("genero");
+                    console.log(gender);
+                    $("#gender").html(gender.name);
+        
+                });*/
 
     });
 }

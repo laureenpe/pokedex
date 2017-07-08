@@ -145,7 +145,6 @@ function sortPokemons() {
 
 //ON KEY PRESS, LOOK UP FOR THE POKEMONS
 function onKeyPress(event) {
-    event.preventDefault();
     if (event.keyCode == 13) {
         var result = $("#search").val();
         if (result != '') {         

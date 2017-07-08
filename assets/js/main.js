@@ -1,7 +1,10 @@
 $(document).ready(function () {
     getPokemons();
+    $('#search').keydown(onKeyPress);//listener keys pressed.
+
 });
 const API = 'https://pokeapi.co/api/v2/';  //Constant Api
+var pokemons = [];
 
 // With this function I try to look up through de api images to give it an id  http://pokeapi.co/docsv2/#pokemonsprites
 
@@ -13,14 +16,14 @@ function getPokemonImage(id) {
 // get all the pokemons from api with ajax.
 function getPokemons() {
     $.ajax({
-        url: API + "pokemon?limit=811",//limit 20 because it is too slow to run the 811
+        url: API + "pokemon?limit=811",//image limit
         type: 'GET',
         datatType: 'JSON'
     }).done(function (response) {
-
-        for (var i = 0; i < response.results.length; i++) {
-            var name = response.results[i].name;
-            var url_id = response.results[i].url.split('/');//To get only the ID number
+        pokemons = response.results;//Obtain the results of all the pokemons
+        for (var i = 0; i < pokemons.length; i++) {
+            var name = pokemons[i].name;
+            var url_id = pokemons[i].url.split('/');//To get only the ID number
             var id = url_id[url_id.length - 2];
             var image = getPokemonImage(id);
             console.log(image);
@@ -67,7 +70,7 @@ function onClickPokemon(element) {
         for (var k = 0; k < response.types.length; k++) {
             var abilities = response.abilities[k].ability.name;
             $('#habilities').append(abilities + " ");
-            console.log("habilidades" + " " +abilities);
+            console.log("habilidades" + " " + abilities);
         }
 
         //Types
@@ -100,6 +103,30 @@ function onClickPokemon(element) {
 
     });
 }
+
+
+//POKEMONS FINDER
+
+function findPokemons(name) {
+    var result = pokemons.find(function (element) {
+        return element.name === name;
+    });
+    return result;
+}
+function onKeyPress(event) {
+    if (event.keyCode == 13) {
+        if ($('#new-task').val() != '') {
+            var result = $("#search").val();
+            var arrayPokemons = findPokemons(result);
+            console.log(arrayPokemons);
+        } else {
+            alert("Tarea no puede estar vacía")
+        }
+    }
+}
+
+
+
 
 
 //ajax llama 811 pokemons

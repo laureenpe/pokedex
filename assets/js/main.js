@@ -61,6 +61,7 @@ function onClickPokemon(element) {
         $("#pokemon-modal-name").html(response.name);
         //WEIGTH AND HEIGHT
         $("#weight").html(response.weight);
+        console.log("Peso y tamaño: " + response.weight + " " + response.height);
         $("#height").html(response.height);
 
         //Types
@@ -81,6 +82,15 @@ function onClickPokemon(element) {
 
             console.log(species.genera[0].genus);
         });
+/*I pretend to call the gender but it is not working
+         $.ajax({
+            url: API + "gender/" + id
+        }).done(function (gender) {
+            console.log("genero");
+            console.log(gender);
+            $("#gender").html(gender.name);
+
+        });*/
 
     });
 }

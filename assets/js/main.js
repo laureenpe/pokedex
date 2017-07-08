@@ -13,7 +13,7 @@ function getPokemonImage(id) {
 // get all the pokemons from api with ajax.
 function getPokemons() {
     $.ajax({
-        url: API + "pokemon?limit=20",//limit 20 because it is too slow to run the 811
+        url: API + "pokemon?limit=811",//limit 20 because it is too slow to run the 811
         type: 'GET',
         datatType: 'JSON'
     }).done(function (response) {

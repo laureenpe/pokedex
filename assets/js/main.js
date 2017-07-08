@@ -147,9 +147,10 @@ function sortPokemons() {
 function onKeyPress(event) {
     event.preventDefault();
     if (event.keyCode == 13) {
-        if ($('#new-task').val() != '') {
-            var result = $("#search").val();
+        var result = $("#search").val();
+        if (result != '') {         
             var objectPokemons = findPokemons(result);
+            console.log('object found: ');
             console.log(objectPokemons);
             if (typeof objectPokemons != "undefined") {
                 var url_id = objectPokemons.url.split('/');//To get only the ID number

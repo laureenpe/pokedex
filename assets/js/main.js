@@ -16,19 +16,25 @@ function getPokemonImage(id) {
 // get all the pokemons from api with ajax.
 function getPokemons() {
     $.ajax({
-        url: API + "pokemon?limit=811",//image limit
+        url: API + "pokemon?limit=700",//image limit
         type: 'GET',
         datatType: 'JSON'
     }).done(function (response) {
         pokemons = response.results;//Obtain the results of all the pokemons
-        var html = ""; //accumulate var
-        for (var i = 0; i < pokemons.length; i++) {
-            var name = pokemons[i].name;
-            var url_id = pokemons[i].url.split('/');//To get only the ID number
-            var id = url_id[url_id.length - 2];
-            var image = getPokemonImage(id);
-            console.log(image);
-            html += `<div class="col s10 m2 l2">
+        var html = htmlPokemons(pokemons);
+        $('.pokemon-container').html(html); //previously I had append but it wasn´t working with the search button
+    });
+}
+
+//Refactorizing the previous variable. This paint the pokemons in the HTML. It works for the AJAX getPokemons and for function findPokemons(name) 
+function htmlPokemons(array) {
+    var html = ""; //accumulate var
+    for (var i = 0; i < array.length; i++) {
+        var name = array[i].name;
+        var url_id = array[i].url.split('/');//To get only the ID number
+        var id = url_id[url_id.length - 2];
+        var image = getPokemonImage(id);
+        html += `<div class="col s10 m2 l2">
                 <div class="pokemon-box">
                     <figure class="photo"><a href="#modal1" data-id="`+ id + `" onclick="onClickPokemon(this)" id="pokemon_` + id + `"><img src="` + image + `" alt="photo"></a></figure>
                     <div class="notch-collectibles-small">
@@ -43,9 +49,8 @@ function getPokemons() {
                     </div>
                 </div>
             </div>`;
-        }
-        $('.pokemon-container').html(html); //previously I had append but it wasn´t working with the search button
-    });
+    }
+    return html;
 }
 
 function onClickPokemon(element) {
@@ -104,7 +109,6 @@ function onClickPokemon(element) {
 
 
 //POKEMONS SEARCH
-
 function findPokemons(name) {
     var result = pokemons.find(function (element) {
         return element.name === name;
@@ -115,31 +119,7 @@ function sortPokemons() {
     var pokeResult = pokemons.sort(function (a, b) {
         return b.name < a.name;
     })
-
-    var html = ""; //accumulate var
-    for (var i = 0; i < pokeResult.length; i++) {
-        var name = pokeResult[i].name;
-        var url_id = pokeResult[i].url.split('/');//To get only the ID number
-        var id = url_id[url_id.length - 2];
-        var image = getPokemonImage(id);
-        console.log(image);
-        html += `<div class="col s10 m2 l2">
-                <div class="pokemon-box">
-                    <figure class="photo"><a href="#modal1" data-id="`+ id + `" onclick="onClickPokemon(this)" id="pokemon_` + id + `"><img src="` + image + `" alt="photo"></a></figure>
-                    <div class="notch-collectibles-small">
-                        <div class="collectibles-wrapper">
-                            <div class="collectibles-collection"><a href="#" rel="tooltip"<span class="icon icon_collection"><img src="assets/icon/pokeball_gray.png" alt="icon"></span></a></div>
-                            <div class="collectibles-wishlist"><a href="#" rel="tooltip"<span class="icon icon_wishlist"><img src="assets/icon/valentines-heart.png" alt="icon"> </span></a></div>
-                            <div class="collectibles-trade"><a href="#" rel="tooltip"><span class="icon icon_trade"><img src="assets/icon/data.png" alt="icon"></span></a></div>
-                        </div>
-                        <div class="texto">
-                            <medium>`+ name + `</medium>
-                        </div>
-                    </div>
-                </div>
-            </div>`;
-    }
-
+    var html = htmlPokemons(pokeResult);
     $('.pokemon-container').html(html); //previously I had append but it wasn´t working with the search button
 };
 
@@ -147,7 +127,7 @@ function sortPokemons() {
 function onKeyPress(event) {
     if (event.keyCode == 13) {
         var result = $("#search").val();
-        if (result != '') {         
+        if (result != '') {
             var objectPokemons = findPokemons(result);
             console.log('object found: ');
             console.log(objectPokemons);

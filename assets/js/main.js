@@ -6,7 +6,7 @@ const API = 'https://pokeapi.co/api/v2/';  //Constant Api
 // With this function I try to look up through de api images to give it an id  http://pokeapi.co/docsv2/#pokemonsprites
 
 function getPokemonImage(id) {
-    var url = "https://pokeapi.co/media/sprites/pokemon/";
+    var url = "http://pokeapi.co/media/sprites/pokemon/";
     return url + id + '.png';
 }
 

@@ -69,6 +69,10 @@ function onClickPokemon(element) {
         $("#weight").html(response.weight);
         console.log("Peso y tamaño: " + response.weight + " " + response.height);
         $("#height").html(response.height);
+        $("#skill-number").html(response.base_experience);
+        console.log("Habilidad: " + response.base_experience);
+        
+
         //ABILITIES
         for (var k = 0; k < response.types.length; k++) {
             var abilities = response.abilities[k].ability.name;

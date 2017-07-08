@@ -21,13 +21,14 @@ function getPokemons() {
         datatType: 'JSON'
     }).done(function (response) {
         pokemons = response.results;//Obtain the results of all the pokemons
+        var html = ""; //accumulate var
         for (var i = 0; i < pokemons.length; i++) {
             var name = pokemons[i].name;
             var url_id = pokemons[i].url.split('/');//To get only the ID number
             var id = url_id[url_id.length - 2];
             var image = getPokemonImage(id);
             console.log(image);
-            var html = `<div class="col s10 m2 l2">
+            html += `<div class="col s10 m2 l2">
                 <div class="pokemon-box">
                     <figure class="photo"><a href="#modal1" data-id="`+ id + `" onclick="onClickPokemon(this)" id="pokemon_` + id + `"><img src="` + image + `" alt="photo"></a></figure>
                     <div class="notch-collectibles-small">
@@ -41,10 +42,9 @@ function getPokemons() {
                         </div>
                     </div>
                 </div>
-            </div>`;
-
-            $('.pokemon-container').append(html);
+            </div>`;           
         }
+        $('.pokemon-container').html(html); //previously I had append but it wasn´t working with the search button
     });
 }
 
@@ -117,10 +117,33 @@ function onKeyPress(event) {
     if (event.keyCode == 13) {
         if ($('#new-task').val() != '') {
             var result = $("#search").val();
-            var arrayPokemons = findPokemons(result);
-            console.log(arrayPokemons);
+            var objectPokemons = findPokemons(result);
+            console.log(objectPokemons);
+            if (typeof objectPokemons != "undefined") {
+                var url_id = objectPokemons.url.split('/');//To get only the ID number
+                var id = url_id[url_id.length - 2];
+                var image = getPokemonImage(id);
+                var html = `<div class="col s10 m2 l2">
+                <div class="pokemon-box">
+                    <figure class="photo"><a href="#modal1" data-id="`+ id + `" onclick="onClickPokemon(this)" id="pokemon_` + id + `"><img src="` + image + `" alt="photo"></a></figure>
+                    <div class="notch-collectibles-small">
+                        <div class="collectibles-wrapper">
+                            <div class="collectibles-collection"><a href="#" rel="tooltip"<span class="icon icon_collection"><img src="assets/icon/pokeball_gray.png" alt="icon"></span></a></div>
+                            <div class="collectibles-wishlist"><a href="#" rel="tooltip"<span class="icon icon_wishlist"><img src="assets/icon/valentines-heart.png" alt="icon"> </span></a></div>
+                            <div class="collectibles-trade"><a href="#" rel="tooltip"><span class="icon icon_trade"><img src="assets/icon/data.png" alt="icon"></span></a></div>
+                        </div>
+                        <div class="texto">
+                            <medium>`+ objectPokemons.name + `</medium>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class:"back"><a href="#" onclick="getPokemons()" class="waves-effect waves-light btn back-search">Volver</a></div>`;
+
+                $(".pokemon-container").html(html);
+            }
         } else {
-            alert("Tarea no puede estar vacía")
+            alert("Buscador no puede estar vacío")
         }
     }
 }

@@ -71,22 +71,18 @@ function onClickPokemon(element) {
         $("#height").html(response.height);
         $("#skill-number").html(response.base_experience);
         console.log("Habilidad: " + response.base_experience);
-        
-
         //ABILITIES
         for (var k = 0; k < response.types.length; k++) {
             var abilities = response.abilities[k].ability.name;
             $('#habilities').append(abilities + " ");
             console.log("habilidades" + " " + abilities);
         }
-
         //Types
         for (var index = 0; index < response.types.length; index++) {
             var type = response.types[index].type.name;
             $('#type-pokemon').append(type + " ");
             console.log(type);
         }
-
         //Calling for the modal text
         $.ajax({
             url: API + "pokemon-species/" + id
@@ -98,16 +94,6 @@ function onClickPokemon(element) {
 
             console.log(species.genera[0].genus);
         });
-        /*I pretend to call the gender but it is not working
-                 $.ajax({
-                    url: API + "gender/" + id
-                }).done(function (gender) {
-                    console.log("genero");
-                    console.log(gender);
-                    $("#gender").html(gender.name);
-        
-                });*/
-
     });
 }
 

@@ -84,6 +84,11 @@ span {
 a .medium {
   text-align: center;
 }
+#modal-name,
+#base_experience {
+  text-transform: capitalize;
+  font-family: "Ubuntu", sans-serif;
+}
 
 /*=============================================
 = POKEDEX STYLES http://www.pokemon.com/es/pokedex/    =

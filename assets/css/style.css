@@ -85,7 +85,8 @@ a .medium {
   text-align: center;
 }
 #modal-name,
-#base_experience {
+#base_experience,
+small {
   text-transform: capitalize;
   font-family: "Ubuntu", sans-serif;
 }
@@ -210,6 +211,8 @@ body.custom-form-elements
   background-color: yellow;
   color: black;
   text-align: center;
+}
+.p-4 {
   padding: 20px;
 }
 

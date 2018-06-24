@@ -21,7 +21,7 @@ function getPokemons() {
   }).done(function(response) {
     pokemons = response.results; //Obtain the results of all the pokemons
     var html = htmlPokemons(pokemons);
-    $(".pokemon-container").html(html); //previously I had append but it wasn´t working with the search button
+    $(".pokemon-container").html(html);
   });
 }
 
@@ -74,11 +74,13 @@ function onClickPokemon(element) {
     $("#modal-photo").attr("src", getPokemonImage(id));
     $("#pokemon-modal-name").html(response.name);
     //WEIGTH AND HEIGHT
-    $("#weight").html(response.weight);
+    $("#weight").html(response.weight + " " + "kg");
     console.log("Peso y tamaño: " + response.weight + " " + response.height);
-    $("#height").html(response.height);
+    $("#height").html(response.height + " " + "m");
     $("#skill-number").html(response.base_experience);
     console.log("Habilidad: " + response.base_experience);
+    //order
+    $("#order").html(response.order);
     //HABILITIES
     for (var k = 0; k < response.types.length; k++) {
       var abilities = response.abilities[k].ability.name;
@@ -95,7 +97,6 @@ function onClickPokemon(element) {
     $.ajax({
       url: API + "pokemon-species/" + id
     }).done(function(species) {
-      console.log("species");
       console.log(species);
       $("#base_experience").html(species.flavor_text_entries[11].flavor_text);
       $("#pokemon-category").html(species.genera[0].genus);
@@ -165,7 +166,3 @@ function onKeyPress(event) {
     }
   }
 }
-
-//ajax llama 811 pokemons
-//ajax click
-//ajax busca imagen

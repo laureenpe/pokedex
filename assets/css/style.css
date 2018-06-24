@@ -8,6 +8,7 @@ body {
 
 header {
   color: #e84848;
+  font-family: Pokemon Solid;
 }
 
 /*=============================================
@@ -89,6 +90,9 @@ a .medium {
 small {
   text-transform: capitalize;
   font-family: "Ubuntu", sans-serif;
+}
+.mono-font {
+  font-family: "Ubuntu Mono", monospace;
 }
 
 /*=============================================
@@ -227,6 +231,13 @@ body.custom-form-elements
 .category,
 .skill {
   font-size: 17px;
+}
+.description,
+.pokemon-box {
+  padding: 20pt;
+}
+#modal-name {
+  font-family: Pokemon Hollow;
 }
 
 /*=============================================

@@ -50,9 +50,9 @@ function htmlPokemons(array) {
                             <div class="collectibles-trade"><a href="#" rel="tooltip"><span class="icon icon_trade"><img src="assets/icon/data.png" alt="icon"></span></a></div>
                         </div>
                         <div class="texto">
-                            <medium>` +
+                            <strong class="mono-font">` +
       name +
-      `</medium>
+      `</strong>
                         </div>
                     </div>
                 </div>

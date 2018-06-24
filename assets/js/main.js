@@ -34,7 +34,7 @@ function htmlPokemons(array) {
     var id = url_id[url_id.length - 2];
     var image = getPokemonImage(id);
     html +=
-      `<div class="col s10 m2 l2">
+      `<div class="col s12 m12 l3">
                 <div class="pokemon-box">
                     <figure class="photo"><a href="#modal1" data-id="` +
       id +
@@ -79,7 +79,7 @@ function onClickPokemon(element) {
     $("#height").html(response.height);
     $("#skill-number").html(response.base_experience);
     console.log("Habilidad: " + response.base_experience);
-    //ABILITIES
+    //HABILITIES
     for (var k = 0; k < response.types.length; k++) {
       var abilities = response.abilities[k].ability.name;
       $("#habilities").append(abilities + " ");
